@@ -1,75 +1,239 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>المهندس مؤمن هاني العطار | خدمات رقمية</title>
-<meta name="description" content="المهندس مؤمن هاني العطار - إنشاء مواقع إلكترونية، تصميم فيديوهات AI، وخدمات السوشيال ميديا. أبو كبير، الشرقية.">
-<style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f5f7fb;color:#172033;line-height:1.8}
-header{background:#111827;color:#fff;padding:18px 7%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:5}
-.logo{font-size:20px;font-weight:700}.nav a{color:#fff;text-decoration:none;margin:0 8px;font-size:14px}
-.hero{padding:90px 7%;background:linear-gradient(135deg,#111827,#243b55);color:#fff;text-align:center}
-.hero h1{font-size:42px;margin:0 0 12px}.hero p{font-size:20px;color:#dbeafe;margin:0 auto 25px;max-width:750px}
-.btn{display:inline-block;padding:12px 22px;border-radius:10px;background:#fff;color:#111827;text-decoration:none;font-weight:700;margin:5px}
-.btn.primary{background:#38bdf8;color:#082f49}
-section{padding:65px 7%;max-width:1200px;margin:auto}.title{text-align:center;margin-bottom:35px}.title h2{font-size:30px;margin:0}.title p{color:#667085}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.card{background:#fff;padding:28px;border-radius:18px;box-shadow:0 8px 25px #0000000d}.card h3{margin-top:0}
-.about{background:#fff;max-width:none}.about-inner{max-width:1050px;margin:auto}
-.contact{background:#111827;color:#fff;max-width:none;text-align:center}.contact p{color:#dbeafe}
-footer{text-align:center;padding:20px;background:#0b1220;color:#cbd5e1;font-size:14px}
-@media(max-width:750px){.nav{display:none}.hero h1{font-size:32px}.cards{grid-template-columns:1fr}section{padding:45px 5%}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سيستم الكافيه - المنيو والشيفتات</title>
+    <style>
+        :root {
+            --bg-offwhite: #FAF6F0;
+            --primary-brown: #4A2C2A;
+            --accent-caramel: #C89D7C;
+            --danger: #D9534F;
+            --success: #2E7D32;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: system-ui, -apple-system, sans-serif; }
+        body { background-color: var(--bg-offwhite); color: var(--primary-brown); padding-bottom: 90px; }
+        
+        header { background: var(--primary-brown); color: #fff; padding: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom-left-radius: 15px; border-bottom-right-radius: 15px; }
+        .table-badge { background: var(--accent-caramel); color: #2D1A18; padding: 4px 10px; border-radius: 10px; font-weight: bold; font-size: 0.85rem; }
+        .btn-top { background: transparent; border: 1px solid var(--accent-caramel); color: var(--accent-caramel); padding: 5px 8px; border-radius: 6px; cursor: pointer; font-size: 0.8rem; }
+        
+        .container { max-width: 700px; margin: 15px auto; padding: 0 10px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 10px; }
+        .card { background: #fff; border: 1px solid #EADBC8; border-radius: 10px; padding: 10px; display: flex; flex-direction: column; justify-content: space-between; text-align: center; }
+        .card h3 { font-size: 0.95rem; margin-bottom: 5px; }
+        .price { color: var(--accent-caramel); font-weight: bold; margin-bottom: 5px; }
+        .stock { font-size: 0.75rem; color: #666; margin-bottom: 8px; }
+        .stock.out { color: var(--danger); font-weight: bold; }
+        
+        .btn { background: var(--primary-brown); color: #fff; border: none; padding: 8px; border-radius: 6px; cursor: pointer; width: 100%; font-weight: bold; }
+        .btn:disabled { background: #ccc; cursor: not-allowed; }
+        
+        .cart-bar { position: fixed; bottom: 0; left: 0; right: 0; background: var(--primary-brown); color: #fff; padding: 12px 20px; display: flex; justify-content: space-between; align-items: center; border-top-left-radius: 12px; border-top-right-radius: 12px; }
+        .cart-btn { background: var(--accent-caramel); color: #000; border: none; padding: 8px 15px; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        
+        .modal { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.6); z-index: 999; justify-content: center; align-items: center; padding: 15px; }
+        .modal-body { background: var(--bg-offwhite); width: 100%; max-width: 450px; border-radius: 12px; padding: 15px; max-height: 85vh; overflow-y: auto; }
+        .close { float: left; font-size: 1.5rem; border: none; background: none; cursor: pointer; }
+    </style>
 </head>
 <body>
-<header>
-<div class="logo">مؤمن هاني العطار</div>
-<nav class="nav">
-<a href="#about">من أنا</a><a href="#services">الخدمات</a><a href="#contact">تواصل</a>
-</nav>
-</header>
 
-<main>
-<section class="hero">
-<h1>المهندس مؤمن هاني العطار</h1>
-<p>حلول رقمية احترافية تساعدك على بناء حضور قوي على الإنترنت.</p>
-<a class="btn primary" href="#services">اكتشف الخدمات</a>
-<a class="btn" href="tel:01030516417">اتصل الآن</a>
-</section>
+    <header>
+        <div>
+            <h2 style="font-size: 1.1rem;">☕ كافيه أوف وايت & بني</h2>
+            <span class="table-badge" id="tbl-num">طاولة: 5</span>
+        </div>
+        <div>
+            <button class="btn-top" onclick="showShift()">📊 تقفيل الشيفت</button>
+            <button class="btn-top" onclick="toggleView()" id="view-btn">البارستا</button>
+        </div>
+    </header>
 
-<section id="about" class="about">
-<div class="about-inner">
-<div class="title"><h2>من أنا</h2></div>
-<p>أقدم خدمات رقمية تشمل إنشاء وتصميم المواقع الإلكترونية، تصميم فيديوهات بالذكاء الاصطناعي (AI)، وخدمات السوشيال ميديا، مع التركيز على الجودة والنتائج المميزة.</p>
-<p><strong>المكان:</strong> أبو كبير، محافظة الشرقية، مصر</p>
-</div>
-</section>
+    <!-- شاشة العميل -->
+    <div class="container" id="cust-view">
+        <div id="order-status-box"></div>
+        <h3 style="margin-bottom: 10px;">المنيو (20 مشروب)</h3>
+        <div class="grid" id="menu-grid"></div>
+    </div>
 
-<section id="services">
-<div class="title"><h2>الخدمات</h2><p>أبرز الخدمات التي أقدمها</p></div>
-<div class="cards">
-<div class="card"><h3>💻 إنشاء مواقع إلكترونية</h3><p>تصميم مواقع حديثة واحترافية ومتوافقة مع الهواتف والأجهزة المختلفة.</p></div>
-<div class="card"><h3>🤖 فيديوهات AI</h3><p>تصميم محتوى وفيديوهات باستخدام تقنيات الذكاء الاصطناعي بطريقة جذابة.</p></div>
-<div class="card"><h3>📱 خدمات السوشيال ميديا</h3><p>مساعدة في بناء حضور رقمي ومحتوى مناسب لمنصات التواصل الاجتماعي.</p></div>
-</div>
-</section>
+    <!-- شاشة البارستا -->
+    <div class="container" id="barista-view" style="display:none;">
+        <h3>شاشة الطلبات للمطبخ</h3>
+        <div id="barista-list" style="margin-top:10px;">لا يوجد طلبات حالية.</div>
+    </div>
 
-<section>
-<div class="title"><h2>لماذا تختارني؟</h2></div>
-<div class="cards">
-<div class="card"><h3>⭐ جودة واحترافية</h3><p>اهتمام بالتفاصيل وتجربة مستخدم واضحة.</p></div>
-<div class="card"><h3>🚀 حلول عصرية</h3><p>استخدام أدوات وتقنيات حديثة في الخدمات الرقمية.</p></div>
-<div class="card"><h3>📈 نتائج مميزة</h3><p>التركيز على تقديم حلول عملية تساعد على تحقيق أهداف المشروع.</p></div>
-</div>
-</section>
+    <!-- شريط السلة السفلي -->
+    <div class="cart-bar" id="cart-bar">
+        <div>العناصر: <b id="c-count">0</b> | الإجمالي: <b id="c-total">0</b> ج.م</div>
+        <button class="cart-btn" onclick="openCart()">مراجعة والطلب 🛒</button>
+    </div>
 
-<section id="contact" class="contact">
-<div class="title"><h2>تواصل معي</h2><p>أبو كبير، محافظة الشرقية</p></div>
-<p>📞 01030516417</p>
-<a class="btn primary" href="tel:01030516417">اتصل الآن</a>
-</section>
-</main>
+    <!-- نافذة السلة -->
+    <div class="modal" id="cart-modal">
+        <div class="modal-body">
+            <button class="close" onclick="closeCart()">&times;</button>
+            <h3>سلة الطلبات</h3>
+            <div id="cart-items" style="margin: 10px 0;"></div>
+            <label style="font-size: 0.85rem;">السكر:</label>
+            <select id="sugar" style="width:100%; padding: 6px; margin-bottom: 10px;">
+                <option>بدون سكر</option>
+                <option selected>مضبوط</option>
+                <option>زيادة</option>
+            </select>
+            <label style="font-size: 0.85rem;">طريقة الدفع:</label>
+            <select id="pay" style="width:100%; padding: 6px; margin-bottom: 15px;">
+                <option>كاش</option>
+                <option>محفظة / كارت</option>
+            </select>
+            <button class="btn" style="background:var(--accent-caramel); color:#000;" onclick="sendOrder()">تأكيد وإرسال الطلب</button>
+        </div>
+    </div>
 
-<footer>© 2026 المهندس مؤمن هاني العطار - جميع الحقوق محفوظة</footer>
+    <!-- نافذة الشيفت -->
+    <div class="modal" id="shift-modal">
+        <div class="modal-body">
+            <button class="close" onclick="closeShift()">&times;</button>
+            <h3>تقرير تقفيل الشيفت (8 ساعات)</h3>
+            <div style="margin: 15px 0; line-height: 1.8;">
+                <p>إجمالي المبيعات: <b id="s-total">0</b> ج.م</p>
+                <p>عدد الطلبات: <b id="s-orders">0</b></p>
+                <p>مبيعات الكاش: <b id="s-cash">0</b> ج.م</p>
+                <p>مبيعات المحفظة/الكارت: <b id="s-card">0</b> ج.م</p>
+            </div>
+            <button class="btn" style="background:var(--danger);" onclick="resetShift()">تقفيل الشيفت وإعادة ضبط المخزون 🔒</button>
+        </div>
+    </div>
+
+    <script>
+        const drinks = [
+            { id: 1, name: "إسبريسو سينجل", price: 35, stock: 30 },
+            { id: 2, name: "إسبريسو دبل", price: 45, stock: 30 },
+            { id: 3, name: "أمريكانو", price: 40, stock: 30 },
+            { id: 4, name: "كابتشينو", price: 55, stock: 30 },
+            { id: 5, name: "لاتيه", price: 55, stock: 30 },
+            { id: 6, name: "سبانيش لاتيه", price: 65, stock: 30 },
+            { id: 7, name: "فلات وايت", price: 60, stock: 30 },
+            { id: 8, name: "موكا دافئة", price: 65, stock: 30 },
+            { id: 9, name: "كورتادو", price: 50, stock: 30 },
+            { id: 10, name: "هوت شوكليت", price: 60, stock: 30 },
+            { id: 11, name: "آيس أمريكانو", price: 45, stock: 30 },
+            { id: 12, name: "آيس لاتيه", price: 60, stock: 30 },
+            { id: 13, name: "آيس سبانيش لاتيه", price: 70, stock: 30 },
+            { id: 14, name: "آيس موكا", price: 70, stock: 30 },
+            { id: 15, name: "فرابوتشينو كراميل", price: 75, stock: 30 },
+            { id: 16, name: "شاي أحمر", price: 25, stock: 30 },
+            { id: 17, name: "شاي أخضر", price: 25, stock: 30 },
+            { id: 18, name: "عصير برتقال", price: 45, stock: 30 },
+            { id: 19, name: "ليمون نعناع", price: 40, stock: 30 },
+            { id: 20, name: "موهيتو بلوبيري", price: 65, stock: 30 }
+        ];
+
+        let cart = [];
+        let orders = [];
+
+        function renderMenu() {
+            const grid = document.getElementById('menu-grid');
+            grid.innerHTML = '';
+            drinks.forEach(d => {
+                const out = d.stock <= 0;
+                grid.innerHTML += `
+                    <div class="card">
+                        <h3>${d.name}</h3>
+                        <div class="price">${d.price} ج.م</div>
+                        <div class="stock ${out?'out':''}">${out?'نفد': 'المتبقي: '+d.stock}</div>
+                        <button class="btn" onclick="add(${d.id})" ${out?'disabled':''}>${out?'غير متوفر':'+ إضافة'}</button>
+                    </div>
+                `;
+            });
+        }
+
+        function add(id) {
+            const d = drinks.find(item => item.id === id);
+            if(d && d.stock > 0) {
+                cart.push(d);
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            document.getElementById('c-count').innerText = cart.length;
+            const total = cart.reduce((s, i) => s + i.price, 0);
+            document.getElementById('c-total').innerText = total;
+        }
+
+        function openCart() {
+            if(cart.length === 0) return alert("السلة فارغة");
+            const div = document.getElementById('cart-items');
+            div.innerHTML = cart.map(i => `<div style="padding:4px 0;">${i.name} - ${i.price} ج.م</div>`).join('');
+            document.getElementById('cart-modal').style.display = 'flex';
+        }
+
+        function closeCart() { document.getElementById('cart-modal').style.display = 'none'; }
+
+        function sendOrder() {
+            cart.forEach(item => { item.stock--; });
+            const ord = {
+                id: Date.now().toString().slice(-4),
+                total: cart.reduce((s, i) => s + i.price, 0),
+                pay: document.getElementById('pay').value,
+                items: cart.map(i => i.name).join(', ')
+            };
+            orders.push(ord);
+            cart = [];
+            updateCart();
+            closeCart();
+            renderMenu();
+            renderBarista();
+            alert("تم إرسال طلبك للبارستا بنجاح!");
+        }
+
+        function toggleView() {
+            const cv = document.getElementById('cust-view');
+            const bv = document.getElementById('barista-view');
+            const cb = document.getElementById('cart-bar');
+            if(bv.style.display === 'none') {
+                bv.style.display = 'block'; cv.style.display = 'none'; cb.style.display = 'none';
+            } else {
+                bv.style.display = 'none'; cv.style.display = 'block'; cb.style.display = 'flex';
+            }
+        }
+
+        function renderBarista() {
+            const list = document.getElementById('barista-list');
+            if(orders.length === 0) { list.innerHTML = "لا يوجد طلبات حالية."; return; }
+            list.innerHTML = orders.map(o => `
+                <div style="background:#fff; padding:10px; border-radius:8px; margin-bottom:8px; border-right:4px solid var(--accent-caramel);">
+                    <b>طلب #${o.id}</b> - المشروبات: ${o.items} | الإجمالي: ${o.total} ج.م (${o.pay})
+                </div>
+            `).join('');
+        }
+
+        function showShift() {
+            const total = orders.reduce((s, o) => s + o.total, 0);
+            const cash = orders.filter(o => o.pay === 'كاش').reduce((s, o) => s + o.total, 0);
+            document.getElementById('s-total').innerText = total;
+            document.getElementById('s-orders').innerText = orders.length;
+            document.getElementById('s-cash').innerText = cash;
+            document.getElementById('s-card').innerText = total - cash;
+            document.getElementById('shift-modal').style.display = 'flex';
+        }
+
+        function closeShift() { document.getElementById('shift-modal').style.display = 'none'; }
+
+        function resetShift() {
+            if(confirm("هل تريد تقفيل الشيفت وإعادة ضبط المخزون لـ 30؟")) {
+                orders = [];
+                drinks.forEach(d => d.stock = 30);
+                renderMenu();
+                renderBarista();
+                closeShift();
+                alert("تم تقفيل الشيفت بنجاح!");
+            }
+        }
+
+        renderMenu();
+    </script>
 </body>
 </html>
